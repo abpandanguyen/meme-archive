@@ -31,6 +31,7 @@ const memeSchema = new Schema({
     dateOrigin: {
         type: Date,
     },
+    comments: [commentSchema],
     description: {
         type: String,
         match: /.{15,}/
@@ -38,7 +39,6 @@ const memeSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     userName: String,
     userAvatar: String,
-    comments: [commentSchema],
 }, {
     timestamps: true
 });

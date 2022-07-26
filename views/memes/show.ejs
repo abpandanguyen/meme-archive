@@ -35,5 +35,44 @@
 </form>
 <% } %>
 
+<% if (meme.comments.length) { %>
+    <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Comment</th>
+            <th>Rating</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let sum = 0; %>
+          <% meme.comments.forEach(function(c) { %>
+            <% sum += c.rating %>
+            <tr>
+              <td><%= c.userName %></td>
+              <td><%= c.createdAt.toLocaleDateString() %></td>
+              <td><%= c.content %></td>
+              <td><%= c.rating %></td>
+              <td>
+                <% if ( user?._id.equals(c.user) ) { %>
+                <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                  <button type="submit">X</button>
+                </form>
+              <% } %>
+                </td>
+            </tr>
+            <% }); %>
+            <tr>
+              <td colspan="3"></td>
+              <td><%= (sum / meme.comments.length).toFixed(2) %></td>
+            </tr>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h5>No Comments Yet</h5>
+    <% } %>
+
 
 <%- include('../partials/footer')%>
