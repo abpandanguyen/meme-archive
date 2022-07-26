@@ -10,13 +10,14 @@ module.exports = {
 };
 
 function update(req, res) {
-    Meme.update(req.params.id, req.body);
+    Meme.findByIdAndUpdate(req.params.id, req.body);
     res.redirect(`/memes/${req.params.id}`);
 }
 
 function edit(req, res) {
-    const meme = Movie.getOne(req.params.id);
-    res.render('memes/edit', { meme });
+    const meme = Meme.findOne(req.params.id);
+    const validSources = Meme.schema.path('source').enumValues;
+    res.render('memes/edit', { meme, validSources });
 }
 
 function newMeme(req, res) {

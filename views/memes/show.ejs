@@ -11,8 +11,8 @@
     <div><%= meme.description %></div>
     <div>Posted By:</div>
     <div><%= meme.userName %></div>
-    <% if (user) { %>
-        <div><a href="/memes/<%= meme.id %>/edit"></a></div>
+    <% if (user && user.equals(meme.user)) { %>
+        <div><a href="/memes/<%= meme.id %>/edit">Test</a></div>
     <% } %>
 </section>
 
@@ -59,7 +59,8 @@
               <td><%= c.content %></td>
               <td><%= c.rating %></td>
               <td>
-                <% if ( user?._id.equals(c.user) ) { %>
+              <!-- <% if ( user?._id.equals(c.user) ) { %> -->
+              <% if (user && user.equals(meme.user)) { %>
                 <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
                   <button type="submit">X</button>
                 </form>
