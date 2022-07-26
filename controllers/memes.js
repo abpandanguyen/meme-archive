@@ -5,7 +5,19 @@ module.exports = {
     show,
     create,
     new: newMeme,
+    edit,
+    update,
 };
+
+function update(req, res) {
+    Meme.update(req.params.id, req.body);
+    res.redirect(`/memes/${req.params.id}`);
+}
+
+function edit(req, res) {
+    const meme = Movie.getOne(req.params.id);
+    res.render('memes/edit', { meme });
+}
 
 function newMeme(req, res) {
     const validSources = Meme.schema.path('source').enumValues;

@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<h1>Edit Meme</h1>
+
+<form id="edit-form" action="/memes/<%= meme.id %>?_method=PUT" method="POST" autocomplete="off">
+    <label>Link:</label>
+    <textarea name="link"></textarea>
+    <label>Source:</label>
+    <select name="source">
+        <% validSources.forEach(function(source, idx) { %>
+            <option value="<%= source %>" <%= idx === 0 ? 'selected' : ''%>>
+                <%= source %>
+            </option>
+        <% }) %>
+    </select>
+    <label>Origin Date:</label>
+        <input type="date" name="dateOrigin">
+    <br>
+    <label>Description:</label>
+    <textarea name="description"></textarea>
+    <br>
+    <input type="submit" value="Save Meme">
+</form>
+
+<%- include('../partials/footer') %>

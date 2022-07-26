@@ -10,6 +10,8 @@ router.get('/', memesCtrl.index);
 router.get('/new', isLoggedIn, memesCtrl.new);
 // GET /memes/:id
 router.get('/:id', memesCtrl.show);
+// GET /memes/:id/edit
+router.get('/:id/edit', memesCtrl.edit);
 // POST /memes
 router.post('/', memesCtrl.create);
 

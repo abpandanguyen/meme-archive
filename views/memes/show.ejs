@@ -11,6 +11,9 @@
     <div><%= meme.description %></div>
     <div>Posted By:</div>
     <div><%= meme.userName %></div>
+    <% if (user) { %>
+        <div><a href="/memes/<%= meme.id %>/edit"></a></div>
+    <% } %>
 </section>
 
 <% if (user) { %>
