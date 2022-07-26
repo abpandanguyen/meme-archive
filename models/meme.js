@@ -2,6 +2,24 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const commentSchema = new Schema({
+    content: {
+        type: String,
+        match: /.{5,}/
+    },
+    rating: {
+        type: Number,
+        min: 1,
+        max: 10,
+        default: 5
+    },
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    userName: String,
+    userAvatar: String
+}, {
+    timestamps: true
+});
+
 const memeSchema = new Schema({
     link: {
         type: String,
@@ -19,7 +37,8 @@ const memeSchema = new Schema({
     },
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     userName: String,
-    userAvatar: String
+    userAvatar: String,
+    comments: [commentSchema],
 }, {
     timestamps: true
 });

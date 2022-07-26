@@ -7,7 +7,7 @@
         <th>Source</th>
         <th>Found<br>Date</th>
         <th>Description</th>
-        <th>User</th>
+        <th>Posted by</th>
         <th></th>
       </tr>
     </thead>
@@ -16,9 +16,9 @@
         <tr>
           <td><%= m.link %></td>
           <td><%= m.source %></td>
-          <td><%= m.dateOrigin %></td>
+          <td><%= String(m.dateOrigin).substr(3, 13) %></td>
           <td><%= m.description %></td>
-          <td><%= m.user %></td>
+          <td><%= m.userName %></td>
           <td><a href="/memes/<%= m._id %>">DETAILS</a></td>
         </tr>
         <% }); %>
