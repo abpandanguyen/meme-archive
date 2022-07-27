@@ -5,7 +5,7 @@ module.exports = {
     delete: deleteComment,
 };
 
-function deleteComment(req, res, next) {
+async function deleteComment(req, res, next) {
     // console.log("hello")
     try {
       const meme = await Meme.findOne({'comments._id': req.params.id, 'comments.user': req.user._id});

@@ -12,18 +12,13 @@ module.exports = {
     delete: deleteMeme,
 };
 
-async function deleteMeme(req, res, next) {
+function deleteMeme(req, res) {
     // console.log("hello")
-    try {
-        const meme = await Meme.findOne({'memes._id': req.params.id, 'memes.user': req.user._id});
-        if (!meme) throw new Error('Nice Try!');
-        // Remove the comment using the remove method on Mongoose arrays
-        meme.remove(req.params.id);
-        await meme.save();
-        res.redirect("/memes");
-      } catch (err) {
-        return next(err);
-      }
+    Meme.findOneAndDelete(
+        {'memes._id': req.params.id, 'memes.user': req.user._id}, function(err) {
+            res.redirect('/memes');
+        }
+    ); 
 }
 
 function showFavorites(req, res) {
