@@ -1,21 +1,25 @@
 <%- include('../partials/header') %>
 <body>
     <nav>
-        <a href="/memes">Meme Archive</a>&nbsp;&nbsp;
-        <% if (user) { %>
-          <a href="/memes/new">Add Meme</a>&nbsp;&nbsp;
-          <a href="/memes/favorites">Favorites</a>&nbsp;&nbsp;
-          <a href="/logout">Log Out</a>&nbsp;&nbsp;
-        <% } else { %>
-          <a href="/auth/google" class="login">LOG IN<img src="https://i.imgur.com/FHjYyi0.png"></a>
-        <% } %>
+        <span>
+          <a href="/memes">Meme Archive</a>&nbsp;&nbsp;
+          <% if (user) { %>
+            <a href="/memes/new">Add Meme</a>&nbsp;&nbsp;
+            <a href="/memes/favorites">Favorites</a>&nbsp;&nbsp;
+            <a href="/logout">Log Out</a>&nbsp;&nbsp;
+          <% } else { %>
+            <a href="/auth/google" class="login">LOG IN<img src="https://i.imgur.com/FHjYyi0.png"></a>
+          <% } %>
+        </span>
     </nav>
     
 <h1>Edit Meme</h1>
-
-<form id="edit-form" action="/memes/<%= meme.id %>?_method=PUT" method="POST" autocomplete="off">
+<br>
+<form id="new-edit-form" action="/memes" method="POST">
     <label>Link:</label>
-    <textarea placeholder="Direct link to image here..." name="link"></textarea>
+    <br>
+    <textarea id="link" placeholder="Direct link to image here..." name="link"></textarea>
+    <br>
     <label>Source:</label>
     <select name="source">
         <% validSources.forEach(function(source, idx) { %>
@@ -28,9 +32,10 @@
         <input type="date" name="dateOrigin">
     <br>
     <label>Description:</label>
-    <textarea name="description"></textarea>
     <br>
-    <input type="submit" value="Save Meme">
+    <textarea id="description-comment" placeholder="Tell us about your meme!" name="description"></textarea>
+    <br>
+    <input type="submit" value="Add Meme">
 </form>
 
 <%- include('../partials/footer') %>

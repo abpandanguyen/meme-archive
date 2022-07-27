@@ -23,6 +23,7 @@ function deleteMeme(req, res) {
 
 function showFavorites(req, res) {
     Meme.find({favoritedBy: req.user._id}, function (err, memes) {
+        memes.sort((a, b) => a.dateOrigin - b.dateOrigin);
         res.render('memes/favorites', { memes });
     });
 }
@@ -87,6 +88,7 @@ function show(req, res) {
 }
 function index(req, res) {
     Meme.find({}, function (err, memes) {
+        memes.sort((a, b) => a.dateOrigin - b.dateOrigin);
         res.render('memes/index', { memes });
     });
 }

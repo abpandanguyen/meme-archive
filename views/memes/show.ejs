@@ -1,6 +1,7 @@
 <%- include('../partials/header')%>
-<body>
+<body id="showPage">
   <nav>
+    <span>
       <a href="/memes">Meme Archive</a>&nbsp;&nbsp;
       <% if (user) { %>
         <a href="/memes/new">Add Meme</a>&nbsp;&nbsp;
@@ -9,42 +10,49 @@
       <% } else { %>
         <a href="/auth/google" class="login">LOG IN<img src="https://i.imgur.com/FHjYyi0.png"></a>
       <% } %>
+    </span>
   </nav>
 
 <section id="show page">
-    <div>Meme: </div>
-    <div><%= meme.link %></div>
+    <div id="showPageHeader">Meme</div>
+    <div><img width="300px" src="<%= meme.link %>"></div>
+    <br>
     <div>Source: </div>
     <div><%= meme.source %></div>
+    <br>
     <div>Origin Date: </div>
     <div><%= String(meme.dateOrigin).substr(3, 13) %></div>
+    <br>
     <div>Description: </div>
     <div><%= meme.description %></div>
+    <br>
     <div>Posted By:</div>
     <div><%= meme.userName %></div>
     <% if (user && user.equals(meme.user)) { %>
         <div><a href="/memes/<%= meme.id %>/edit">Edit Meme</a></div>
+        <br>
         <form action="/memes/<%= meme._id %>?_method=DELETE" method="POST">
           <button type="submit">Delete Meme</button>
         </form>
     <% } %>
 </section>
-
+<br>
 <% if (user) { %>
   <form id="add-favorite-form" method="POST"
       action ="/memes/<%= meme._id %>/favorites">
-        <label for="">Favorite?</label>
-        <input type="submit" value="Add Favorite">
+        <input type="submit" value="Favorite Meme">
   </form>
 <% } %>
 
-<br><br>
+<br>
 
 <% if (user) { %>
   <form id="add-comment-form" method="POST" 
     action ="/memes/<%= meme._id %>/comments">
     <label>Comment:</label>
-    <textarea name="content"></textarea>
+    <br>
+    <textarea id="description-comment" placeholder="Be nice!" name="content"></textarea>
+    <br>
     <label>Rating:</label>
     <select name="rating">
         <option value="1">1</option>

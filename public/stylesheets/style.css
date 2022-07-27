@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px 'Raleway', sans-serif;
+  background-color: lightcyan;
 }
 
 body > nav {
@@ -9,6 +9,13 @@ body > nav {
   justify-content: flex-end;
   align-items: center;
   padding: 0 20px 0 30px;
+  font: 13px 'Raleway', sans-serif;
+}
+body > nav span {
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 5px;
+  background-color: honeydew;
 }
 
 nav > img {
@@ -18,19 +25,14 @@ nav > img {
 }
 
 a {
-  color: #00B7FF;
+  color: lightseagreen;
 }
-
 a:hover {
-  color: hotpink;
+  background-color: yellow;
 }
 
 .home {
   text-align: center;
-}
-
-#homePage {
-  background-color: lightcyan;
 }
 #homePageImg {
   display: block;
@@ -39,10 +41,58 @@ a:hover {
   width: 50%;
 }
 
-#meme-list {
-  width: 100%;
+#showPage {
+  font: 14px 'PT Sans', sans-serif;
 }
 
+#new-edit-form {
+  padding: 12px 20px;
+  font: 14px 'PT Sans', sans-serif;
+}
+
+#link {
+ width: 75%;
+ height: 25px;
+}
+
+#description-comment {
+  width: 50%;
+  height: 75px;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+table, th, td {
+  border: 1px solid black;
+  padding: 2px;
+  border-collapse: collapse;
+  border-width: medium;
+}
+th {
+  font: 16px 'Lato', sans-serif;
+}
+td {
+  font: 14px 'PT Sans', sans-serif;
+}
+td img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+select {
+  font: 14px 'PT Sans', sans-serif;
+}
+
+input[type="date"] {
+  font: 14px 'PT Sans', sans-serif;
+}
+
+textarea {
+  font: 14px 'PT Sans', sans-serif;
+}
 textarea::placeholder {
   color:  black;
   opacity: 0.3;
@@ -54,7 +104,6 @@ textarea::placeholder {
   align-items: center;
   height: 34px;
 }
-
 .login img {
   height: 30px;
 }

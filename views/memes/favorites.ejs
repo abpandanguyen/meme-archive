@@ -1,6 +1,7 @@
 <%- include('../partials/header')%>
-<body>
+<body id="listPage">
   <nav>
+    <span>
       <a href="/memes">Meme Archive</a>&nbsp;&nbsp;
       <% if (user) { %>
         <a href="/memes/new">Add Meme</a>&nbsp;&nbsp;
@@ -9,26 +10,26 @@
       <% } else { %>
         <a href="/auth/google" class="login">LOG IN<img src="https://i.imgur.com/FHjYyi0.png"></a>
       <% } %>
+    </span>
   </nav>
-  
-<table id="list">
+<br>
+<br>
+<table id="meme-list">
     <thead>
       <tr>
         <th>Meme</th>
         <th>Source</th>
         <th>Found<br>Date</th>
-        <th>Description</th>
         <th>Posted by</th>
-        <th></th>
+        <th>Additional Info</th>
       </tr>
     </thead>
     <tbody>
       <% memes.forEach(function(m) { %>
         <tr>
-          <td><%= m.link %></td>
+          <td><img width="300px" src="<%= m.link %>"></td>
           <td><%= m.source %></td>
           <td><%= String(m.dateOrigin).substr(3, 13) %></td>
-          <td><%= m.description %></td>
           <td><%= m.userName %></td>
           <td><a href="/memes/<%= m._id %>">DETAILS</a></td>
         </tr>
