@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Raleway', sans-serif;
 }
 
 body > nav {
@@ -19,6 +19,33 @@ nav > img {
 
 a {
   color: #00B7FF;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+.home {
+  text-align: center;
+}
+
+#homePage {
+  background-color: lightcyan;
+}
+#homePageImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#meme-list {
+  width: 100%;
+}
+
+textarea::placeholder {
+  color:  black;
+  opacity: 0.3;
 }
 
 .login {

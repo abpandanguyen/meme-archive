@@ -1,8 +1,21 @@
 <%- include('../partials/header') %>
-
+<body>
+    <nav>
+        <a href="/memes">Meme Archive</a>&nbsp;&nbsp;
+        <% if (user) { %>
+          <a href="/memes/new">Add Meme</a>&nbsp;&nbsp;
+          <a href="/memes/favorites">Favorites</a>&nbsp;&nbsp;
+          <a href="/logout">Log Out</a>&nbsp;&nbsp;
+        <% } else { %>
+          <a href="/auth/google" class="login">LOG IN<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
+    </nav>
+<br>
+<br>
 <form id="new-form" action="/memes" method="POST">
     <label>Link:</label>
-    <textarea name="link"></textarea>
+    <textarea placeholder="Direct link to image here..." name="link"></textarea>
+    <br>
     <label>Source:</label>
     <select name="source">
         <% validSources.forEach(function(source, idx) { %>
@@ -15,7 +28,7 @@
         <input type="date" name="dateOrigin">
     <br>
     <label>Description:</label>
-    <textarea name="description"></textarea>
+    <textarea placeholder="Tell us about your meme!" name="description"></textarea>
     <br>
     <input type="submit" value="Add Meme">
 </form>
