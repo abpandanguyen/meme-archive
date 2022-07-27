@@ -12,12 +12,25 @@
     <div>Posted By:</div>
     <div><%= meme.userName %></div>
     <% if (user && user.equals(meme.user)) { %>
-        <div><a href="/memes/<%= meme.id %>/edit">Test</a></div>
+        <div><a href="/memes/<%= meme.id %>/edit">Edit Meme</a></div>
+        <form action="/memes/<%= meme._id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete Meme</button>
+        </form>
     <% } %>
 </section>
 
 <% if (user) { %>
-<form id="add-comment-form" method="POST" 
+  <form id="add-favorite-form" method="POST"
+      action ="/memes/<%= meme._id %>/favorites">
+        <label for="">Favorite?</label>
+        <input type="submit" value="Add Favorite">
+  </form>
+<% } %>
+
+<br><br>
+
+<% if (user) { %>
+  <form id="add-comment-form" method="POST" 
     action ="/memes/<%= meme._id %>/comments">
     <label>Comment:</label>
     <textarea name="content"></textarea>
@@ -35,48 +48,47 @@
         <option value="10">10</option>
     </select>
     <input type="submit" value="Add Comment">
-</form>
+  </form>
 <% } %>
 
 <% if (meme.comments.length) { %>
-    <table>
-        <thead>
+  <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Comment</th>
+          <th>Rating</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% let sum = 0; %>
+        <% meme.comments.forEach(function(c) { %>
+          <% sum += c.rating %>
           <tr>
-            <th>User</th>
-            <th>Date</th>
-            <th>Comment</th>
-            <th>Rating</th>
-            <th></th>
+            <td><%= c.userName %></td>
+            <td><%= c.createdAt.toLocaleDateString() %></td>
+            <td><%= c.content %></td>
+            <td><%= c.rating %></td>
+            <td>
+              <% if ( user?._id.equals(c.user) ) { %>
+              <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Comment</button>
+              </form>
+            <% } %>
+              </td>
           </tr>
-        </thead>
-        <tbody>
-          <% let sum = 0; %>
-          <% meme.comments.forEach(function(c) { %>
-            <% sum += c.rating %>
-            <tr>
-              <td><%= c.userName %></td>
-              <td><%= c.createdAt.toLocaleDateString() %></td>
-              <td><%= c.content %></td>
-              <td><%= c.rating %></td>
-              <td>
-              <!-- <% if ( user?._id.equals(c.user) ) { %> -->
-              <% if (user && user.equals(meme.user)) { %>
-                <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-                  <button type="submit">X</button>
-                </form>
-              <% } %>
-                </td>
-            </tr>
-            <% }); %>
-            <tr>
-              <td colspan="3"></td>
-              <td><%= (sum / meme.comments.length).toFixed(2) %></td>
-            </tr>
-        </tbody>
-      </table>
-    <% } else { %>
-      <h5>No Comments Yet</h5>
-    <% } %>
+        <% }); %>
+          <tr>
+            <td colspan="3"></td>
+            <td><%= (sum / meme.comments.length).toFixed(2) %></td>
+          </tr>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h5>No Comments Yet</h5>
+<% } %>
 
 
 <%- include('../partials/footer')%>

@@ -7,7 +7,49 @@ module.exports = {
     new: newMeme,
     edit,
     update,
+    addFavorite,
+    showFavorites,
+    delete: deleteMeme,
 };
+
+async function deleteMeme(req, res, next) {
+    // console.log("hello")
+    try {
+        const meme = await Meme.findOne({'memes._id': req.params.id, 'memes.user': req.user._id});
+        if (!meme) throw new Error('Nice Try!');
+        // Remove the comment using the remove method on Mongoose arrays
+        meme.remove(req.params.id);
+        await meme.save();
+        res.redirect("/memes");
+      } catch (err) {
+        return next(err);
+      }
+}
+
+function showFavorites(req, res) {
+    Meme.find({favoritedBy: req.user._id}, function (err, memes) {
+        res.render('memes/favorites', { memes });
+    });
+}
+
+function addFavorite(req, res) {
+    Meme.findById(req.params.id, function(err, m) {
+        console.log(m)
+        if (m.favoritedBy.includes(req.user._id)) {
+            m.favoritedBy.remove(req.user._id);
+        } else {
+            m.favoritedBy.push(req.user._id);
+        }
+        m.save(function(err, meme) {
+            console.log(meme)
+            if (err) {
+                console.log(err);
+                return res.redirect(`/memes/${req.params.id}`);
+            }
+            res.redirect(`/memes/${req.params.id}`);
+        });
+    });
+}
 
 function update(req, res) {
     Meme.findByIdAndUpdate(req.params.id, req.body);

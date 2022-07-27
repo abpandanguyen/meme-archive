@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
+
 
 const commentSchema = new Schema({
     content: {
@@ -36,11 +36,13 @@ const memeSchema = new Schema({
         type: String,
         match: /.{15,}/
     },
+    favoritedBy: [{type: Schema.Types.ObjectId, ref: 'User'}],
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     userName: String,
     userAvatar: String,
 }, {
     timestamps: true
 });
+
 
 module.exports = mongoose.model('Meme', memeSchema);

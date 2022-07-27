@@ -6,7 +6,7 @@ module.exports = {
 };
 
 async function deleteComment(req, res, next) {
-    console.log("hello")
+    // console.log("hello")
     try {
       const meme = await Meme.findOne({'comments._id': req.params.id, 'comments.user': req.user._id});
       if (!meme) throw new Error('Nice Try!');
@@ -20,7 +20,7 @@ async function deleteComment(req, res, next) {
 }
 
 function create(req, res) {
-    console.log("Hello") 
+    // console.log("Hello") 
     Meme.findById(req.params.id, function(err, meme) {
         req.body.userName = req.user.name;
         req.body.user = req.user._id;

@@ -14,7 +14,7 @@
     <tbody>
       <% memes.forEach(function(m) { %>
         <tr>
-          <td><img width="300px" src="<%= m.link %>"></td>
+          <td><%= m.link %></td>
           <td><%= m.source %></td>
           <td><%= String(m.dateOrigin).substr(3, 13) %></td>
           <td><%= m.description %></td>
