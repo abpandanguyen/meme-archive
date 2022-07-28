@@ -35,11 +35,18 @@
 ![Github](https://img.shields.io/badge/-GitHub-333?style=flat&logo=github)
 ![VSCode](https://img.shields.io/badge/-VS_Code-333?style=flat&logo=visualstudio)
 ![Markdown](https://img.shields.io/badge/-Markdown-333?style=flat&logo=markdown)
+![Node](https://img.shields.io/badge/-Node.js-333?style=flat&logo=node.js)
+![MongoDB](https://img.shields.io/badge/-MongoDB-333?style=flat&logo=mongodb)
+![Mongoose ODM](https://img.shields.io/badge/-Mongoose_ODM-333?style=flat&logo=mongodb)
+![Express](https://img.shields.io/badge/-Express-333?style=flat&logo=express)
+![Trello](https://img.shields.io/badge/-Trello-333?style=flat&logo=trello)
+![Heroku](https://img.shields.io/badge/-Heroku-333?style=flat&logo=heroku)
 
 <h1>Getting Started</h1>
 
 <ol>
-<li></li>
+<li><a href="https://the-meme-archive.herokuapp.com">The Meme Archive</a></li>
+<li><a href="https://trello.com/b/sWbU7H2S/meme-archive">Meme Archive Trello Board</a></li>
 </ol>
 
 ## :fast_forward: Next Steps   
