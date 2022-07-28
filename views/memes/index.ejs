@@ -13,10 +13,10 @@
       <% } %>
     </span>
   </nav>
-<br>
-<br>
-<h1>The Archive</h1>
-<table id="meme-list">
+  <br>
+  <br>
+  <h1>The Archive</h1>
+  <table id="meme-list">
     <thead>
       <tr>
         <th>Meme</th>
@@ -35,8 +35,8 @@
           <td><%= m.userName %></td>
           <td><a href="/memes/<%= m._id %>">DETAILS</a></td>
         </tr>
-        <% }); %>
-      </tbody>
+      <% }); %>
+    </tbody>
   </table>
   <br>
 <%- include('../partials/footer')%>

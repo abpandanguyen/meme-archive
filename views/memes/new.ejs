@@ -13,29 +13,29 @@
         </span>
     </nav>
 
-<h1>Add Meme</h1>
-<br>
-<form id="new-edit-form" action="/memes" method="POST">
-    <label>Link:</label>
+    <h1>Add Meme</h1>
     <br>
-    <textarea id="link" placeholder="Direct link to image here..." name="link"></textarea>
-    <br>
-    <label>Source:</label>
-    <select name="source">
-        <% validSources.forEach(function(source, idx) { %>
-            <option value="<%= source %>" <%= idx === 0 ? 'selected' : ''%>>
-                <%= source %>
-            </option>
-        <% }) %>
-    </select>
-    <label>Origin Date:</label>
-        <input type="datetime-local" name="dateOrigin">
-    <br>
-    <label>Description:</label>
-    <br>
-    <textarea id="description-comment" placeholder="Tell us about your meme!" name="description"></textarea>
-    <br>
-    <button id="add-edit-button">Add Meme</button>
-</form>
+    <form id="new-edit-form" action="/memes" method="POST">
+        <label>Link:</label>
+        <br>
+        <textarea id="link" placeholder="Direct link to image here..." name="link"></textarea>
+        <br>
+        <label>Source:</label>
+        <select name="source">
+            <% validSources.forEach(function(source, idx) { %>
+                <option value="<%= source %>" <%= idx === 0 ? 'selected' : ''%>>
+                    <%= source %>
+                </option>
+            <% }) %>
+        </select>
+        <label>Origin Date:</label>
+            <input type="datetime-local" name="dateOrigin">
+        <br>
+        <label>Description:</label>
+        <br>
+        <textarea id="description-comment" placeholder="Tell us about your meme!" name="description"></textarea>
+        <br>
+        <button id="add-edit-button">Add Meme</button>
+    </form>
 
 <%- include('../partials/footer') %>

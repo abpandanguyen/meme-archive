@@ -2,41 +2,41 @@
 <body>
     <nav>
         <span>
-          <a href="/memes">Meme Archive</a>&nbsp;&nbsp;
-          <% if (user) { %>
+            <a href="/memes">Meme Archive</a>&nbsp;&nbsp;
+            <% if (user) { %>
             <a href="/memes/new">Add Meme</a>&nbsp;&nbsp;
             <a href="/memes/posts">Your Posts</a>&nbsp;&nbsp;
             <a href="/memes/favorites">Favorites</a>&nbsp;&nbsp;
             <a href="/logout">Log Out</a>&nbsp;&nbsp;
-          <% } else { %>
+            <% } else { %>
             <a href="/auth/google" class="login">LOG IN<img src="https://i.imgur.com/FHjYyi0.png"></a>
-          <% } %>
+            <% } %>
         </span>
     </nav>
     
-<h1>Edit Meme</h1>
-<br>
-<form id="new-edit-form" action="/memes/<%= meme._id %>?_method=PUT" method="POST">
-    <label>Link:</label>
+    <h1>Edit Meme</h1>
     <br>
-    <textarea id="link" name="link"><%= meme.link %></textarea>
-    <br>
-    <label>Source:</label>
-    <select name="source">
-        <% validSources.forEach(function(source, idx) { %>
-            <option value="<%= source %>" <%= idx === 0 ? 'selected' : ''%>>
-                <%= source %>
-            </option>
-        <% }) %>
-    </select>
-    <label>Origin Date:</label>
-        <input value="<%= meme.dateOrigin %>" type="date" name="dateOrigin">
-    <br>
-    <label>Description:</label>
-    <br>
-    <textarea id="description-comment" placeholder="Edit your meme!" name="description"><%= meme.description %></textarea>
-    <br>
-    <button id="add-edit-button">Save Edit</button>
-</form>
+    <form id="new-edit-form" action="/memes/<%= meme._id %>?_method=PUT" method="POST">
+        <label>Link:</label>
+        <br>
+        <textarea id="link" name="link"><%= meme.link %></textarea>
+        <br>
+        <label>Source:</label>
+        <select name="source">
+            <% validSources.forEach(function(source, idx) { %>
+                <option value="<%= source %>" <%= idx === 0 ? 'selected' : ''%>>
+                    <%= source %>
+                </option>
+            <% }) %>
+        </select>
+        <label>Origin Date:</label>
+            <input value="<%= meme.dateOrigin %>" type="date" name="dateOrigin">
+        <br>
+        <label>Description:</label>
+        <br>
+        <textarea id="description-comment" placeholder="Edit your meme!" name="description"><%= meme.description %></textarea>
+        <br>
+        <button id="add-edit-button">Save Edit</button>
+    </form>
 
 <%- include('../partials/footer') %>

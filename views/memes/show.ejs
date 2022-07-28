@@ -88,10 +88,10 @@
             <td><%= c.rating %></td>
             <td>
               <% if ( user?._id.equals(c.user) ) { %>
-              <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-                <button id="delete-button">Delete Comment</button>
-              </form>
-            <% } %>
+                <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                  <button id="delete-button">Delete Comment</button>
+                </form>
+              <% } %>
               </td>
           </tr>
         <% }); %>
@@ -100,9 +100,9 @@
             <td><%= (sum / meme.comments.length).toFixed(2) %></td>
           </tr>
       </tbody>
-    </table>
-  <% } else { %>
-    <h5>No Comments Yet</h5>
+  </table>
+<% } else { %>
+  <h5>No Comments Yet</h5>
 <% } %>
 
 

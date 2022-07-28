@@ -1,11 +1,19 @@
 <div align="center">
    <h2>:sparkler: The Meme Archive :sparkler:</h2>
    <h4>https://the-meme-archive.herokuapp.com</h4>
-   <h5>Anthony Nguyen</h5>                             
-</div>
-
+   <h5>Anthony Nguyen</h5>  
+   <a href="https://www.linkedin.com/in/abpnguyen/" target="_blank">
+      <img
+      src="https://img.shields.io/badge/-@username-blue?style=flat&logo=Linkedin&logoColor=white"/>
+   </a>
+   <a href="https://github.com/abpandanguyen" target="_blank">
+      <img
+      src="https://img.shields.io/badge/-profpan396.github.io-magenta?style=flat&logo=Blackberry&logoColor=black">
+   </a>                           
 <h1>Description</h1>
 <p>The Meme Archive is a fun little project to make a place where users can simply store and look at some memes and garner a bit of context from them. Users can post their own, comment on them or other's memes, and also compile a list of their personal favorites! I actually had a similar idea for this in my pre reqs so I thought I would bring it to life!</p>
+</div>
+
 
 <h1>Screenshot(s)</h1>
 
@@ -50,11 +58,11 @@
 
 ### Upcoming Features
 
-- [ allowing users to see other user's favorite posts ] 
+- [ ] Allowing users to see other user's favorite posts 
 
-- [ being able to sort posts by their preference (source, date, user) with a button ] 
+- [ ] Being able to sort posts by their preference (source, date, user) with a button 
 
-- [ utilizing social media APIs ]
+- [ ] Utilizing social media APIs
 
-- [ allowing users to post videos and other varying kinds of links ]
+- [ ] Allowing users to post videos and other varying kinds of links
 

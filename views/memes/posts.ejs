@@ -12,30 +12,30 @@
       <% } %>
     </span>
   </nav>
-<br>
-<br>
-<h1>Your Posts</h1>
-<table id="meme-list">
-    <thead>
-      <tr>
-        <th>Meme</th>
-        <th>Source</th>
-        <th>Found<br>Date</th>
-        <th>Posted by</th>
-        <th>Additional Info</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% memes.forEach(function(m) { %>
+  <br>
+  <br>
+  <h1>Your Posts</h1>
+  <table id="meme-list">
+      <thead>
         <tr>
-          <td><img width="300px" src="<%= m.link %>"></td>
-          <td><%= m.source %></td>
-          <td><%= String(m.dateOrigin).substr(3, 13) %></td>
-          <td><%= m.userName %></td>
-          <td><a href="/memes/<%= m._id %>">DETAILS</a></td>
+          <th>Meme</th>
+          <th>Source</th>
+          <th>Found<br>Date</th>
+          <th>Posted by</th>
+          <th>Additional Info</th>
         </tr>
-        <% }); %>
-      </tbody>
-</table>
-<br>
+      </thead>
+      <tbody>
+        <% memes.forEach(function(m) { %>
+          <tr>
+            <td><img width="300px" src="<%= m.link %>"></td>
+            <td><%= m.source %></td>
+            <td><%= String(m.dateOrigin).substr(3, 13) %></td>
+            <td><%= m.userName %></td>
+            <td><a href="/memes/<%= m._id %>">DETAILS</a></td>
+          </tr>
+          <% }); %>
+        </tbody>
+  </table>
+  <br>
 <%- include('../partials/footer')%>
