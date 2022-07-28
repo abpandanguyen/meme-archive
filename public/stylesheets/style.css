@@ -33,6 +33,7 @@ a:hover {
 
 .home {
   text-align: center;
+  font-family: 'Vesper Libre', serif;
 }
 #homePageImg {
   display: block;
@@ -58,6 +59,11 @@ a:hover {
 #description-comment {
   width: 50%;
   height: 75px;
+}
+
+#footer {
+  font-family: 'Vesper Libre', serif;
+  text-align: center;
 }
 
 table {
