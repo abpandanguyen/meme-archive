@@ -16,7 +16,7 @@
     
 <h1>Edit Meme</h1>
 <br>
-<form id="new-edit-form" action="/memes" method="POST">
+<form id="new-edit-form" action="/memes/<%= meme.id %>?_method=PUT" method="POST">
     <label>Link:</label>
     <br>
     <textarea id="link" placeholder="Direct link to image here..." name="link"></textarea>
@@ -34,9 +34,9 @@
     <br>
     <label>Description:</label>
     <br>
-    <textarea id="description-comment" placeholder="Tell us about your meme!" name="description"></textarea>
+    <textarea id="description-comment" placeholder="Edit your meme!" name="description"></textarea>
     <br>
-    <input type="submit" value="Add Meme">
+    <input type="submit" value="Edit Meme">
 </form>
 
 <%- include('../partials/footer') %>

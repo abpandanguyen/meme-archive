@@ -33,7 +33,7 @@
         <div><a href="/memes/<%= meme.id %>/edit">Edit Meme</a></div>
         <br>
         <form action="/memes/<%= meme._id %>?_method=DELETE" method="POST">
-          <button type="submit">Delete Meme</button>
+          <input type="submit" value="Delete Meme">
         </form>
     <% } %>
 </section>

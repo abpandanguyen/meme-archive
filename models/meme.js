@@ -34,7 +34,7 @@ const memeSchema = new Schema({
     comments: [commentSchema],
     description: {
         type: String,
-        match: /.{15,}/
+        match: /.{15,}/,
     },
     favoritedBy: [{type: Schema.Types.ObjectId, ref: 'User'}],
     user: {type: Schema.Types.ObjectId, ref: 'User'},

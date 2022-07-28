@@ -15,9 +15,10 @@ module.exports = {
 };
 
 function deleteMeme(req, res) {
-    // console.log("hello")
+    console.log(req.params.id)
+    console.log(req.user._id)
     Meme.findOneAndDelete(
-        {'memes._id': req.params.id, 'memes.user': req.user._id}, function(err) {
+        {_id: req.params.id, user: req.user._id}, function(err) {
             res.redirect('/memes');
         }
     ); 
@@ -58,14 +59,23 @@ function addFavorite(req, res) {
 }
 
 function update(req, res) {
-    Meme.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect(`/memes/${req.params.id}`);
+    Meme.findOneAndUpdate(
+        {_id: req.params.id, user: req.user._id}, 
+        req.body,
+        {new: true},
+        function(err, meme) {
+            if (err || !meme) return res.redirect('/memes');
+            res.redirect(`/memes/${req.params.id}`);
+        }
+    );
 }
 
 function edit(req, res) {
-    const meme = Meme.findOne(req.params.id);
     const validSources = Meme.schema.path('source').enumValues;
-    res.render('memes/edit', { meme, validSources });
+    const meme = Meme.findOne({_id: req.params.id, user: req.user._id}, function(err, m) {
+        if (err || !m) return res.redirect('/memes');
+        res.render('memes/edit', { meme, validSources });
+    });
 }
 
 function newMeme(req, res) {
