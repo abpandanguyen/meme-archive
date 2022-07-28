@@ -15,8 +15,6 @@ module.exports = {
 };
 
 function deleteMeme(req, res) {
-    console.log(req.params.id)
-    console.log(req.user._id)
     Meme.findOneAndDelete(
         {_id: req.params.id, user: req.user._id}, function(err) {
             res.redirect('/memes');
@@ -41,14 +39,12 @@ function showFavorites(req, res) {
 
 function addFavorite(req, res) {
     Meme.findById(req.params.id, function(err, m) {
-        console.log(m)
         if (m.favoritedBy.includes(req.user._id)) {
             m.favoritedBy.remove(req.user._id);
         } else {
             m.favoritedBy.push(req.user._id);
         }
         m.save(function(err, meme) {
-            console.log(meme)
             if (err) {
                 console.log(err);
                 return res.redirect(`/memes/${req.params.id}`);
@@ -59,7 +55,6 @@ function addFavorite(req, res) {
 }
 
 function update(req, res) {
-    console.log("hello")
     Meme.findOneAndUpdate(
         {_id: req.params.id, user: req.user._id}, 
         req.body,
@@ -74,7 +69,6 @@ function update(req, res) {
 function edit(req, res) {
     const validSources = Meme.schema.path('source').enumValues;
     const m = Meme.findOne({_id: req.params.id, user: req.user._id}, function(err, meme) {
-        console.log(meme)
         if (err || !meme) return res.redirect('/memes');
         res.render('memes/edit', { meme, validSources });
     });
@@ -86,7 +80,6 @@ function newMeme(req, res) {
 }
 
 function create(req, res) {
-    console.log(req.user)
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
@@ -94,7 +87,6 @@ function create(req, res) {
     req.body.userName = req.user.name;
     const meme = new Meme(req.body);
     meme.save(function(err, meme) {
-        console.log(meme)
         if (err) {
             console.log(err);
             return res.redirect('/memes/new');
