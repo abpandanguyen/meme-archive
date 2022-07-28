@@ -59,21 +59,23 @@ function addFavorite(req, res) {
 }
 
 function update(req, res) {
+    console.log("hello")
     Meme.findOneAndUpdate(
         {_id: req.params.id, user: req.user._id}, 
         req.body,
         {new: true},
         function(err, meme) {
             if (err || !meme) return res.redirect('/memes');
-            res.redirect(`/memes/${req.params.id}`);
+            res.redirect(`/memes/${meme._id}`);
         }
     );
 }
 
 function edit(req, res) {
     const validSources = Meme.schema.path('source').enumValues;
-    const meme = Meme.findOne({_id: req.params.id, user: req.user._id}, function(err, m) {
-        if (err || !m) return res.redirect('/memes');
+    const m = Meme.findOne({_id: req.params.id, user: req.user._id}, function(err, meme) {
+        console.log(meme)
+        if (err || !meme) return res.redirect('/memes');
         res.render('memes/edit', { meme, validSources });
     });
 }

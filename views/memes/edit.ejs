@@ -16,10 +16,10 @@
     
 <h1>Edit Meme</h1>
 <br>
-<form id="new-edit-form" action="/memes/<%= meme.id %>?_method=PUT" method="POST">
+<form id="new-edit-form" action="/memes/<%= meme._id %>?_method=PUT" method="POST">
     <label>Link:</label>
     <br>
-    <textarea id="link" placeholder="Direct link to image here..." name="link"></textarea>
+    <textarea id="link" name="link"><%= meme.link %></textarea>
     <br>
     <label>Source:</label>
     <select name="source">
@@ -30,13 +30,13 @@
         <% }) %>
     </select>
     <label>Origin Date:</label>
-        <input type="date" name="dateOrigin">
+        <input value="<%= meme.dateOrigin %>" type="date" name="dateOrigin">
     <br>
     <label>Description:</label>
     <br>
-    <textarea id="description-comment" placeholder="Edit your meme!" name="description"></textarea>
+    <textarea id="description-comment" placeholder="Edit your meme!" name="description"><%= meme.description %></textarea>
     <br>
-    <input type="submit" value="Edit Meme">
+    <button id="add-edit-button">Save Edit</button>
 </form>
 
 <%- include('../partials/footer') %>

@@ -30,13 +30,13 @@
         <% }) %>
     </select>
     <label>Origin Date:</label>
-        <input type="date" name="dateOrigin">
+        <input type="datetime-local" name="dateOrigin">
     <br>
     <label>Description:</label>
     <br>
     <textarea id="description-comment" placeholder="Tell us about your meme!" name="description"></textarea>
     <br>
-    <input type="submit" value="Add Meme">
+    <button id="add-edit-button">Add Meme</button>
 </form>
 
 <%- include('../partials/footer') %>

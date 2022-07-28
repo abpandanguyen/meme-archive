@@ -9,7 +9,7 @@ body > nav {
   justify-content: center;
   align-items: center;
   padding: 0 20px 0 30px;
-  font: 20px 'Raleway', sans-serif;
+  font: 22px 'Raleway', sans-serif;
   font-weight: bold;
   
 }
@@ -54,14 +54,69 @@ a:hover {
   font: 14px 'PT Sans', sans-serif;
 }
 
+#headings {
+  font-size: 24px;
+  font-weight: bolder;
+}
 #link {
  width: 75%;
- height: 25px;
+ height: 50px;
 }
 
 #description-comment {
   width: 50%;
   height: 75px;
+}
+
+button {
+  font-size: 16px;
+  padding: 6px 6px;
+  border-radius: 15px;
+  font-family: 'Saira', sans-serif;
+}
+#add-edit-button {
+  background-color: rgb(48, 141, 27);
+  transition-duration: 0.4s;
+  width: fit-content;
+  color: whitesmoke;
+  border: solid;
+  border-width: 2px;
+  border-color: gold;
+}
+#add-edit-button:hover {
+  background-color: rgb(220, 136, 20);
+  border-width: 5px;
+  border-color: papayawhip;
+}
+#favorite-button {
+  background-color: blue;
+  transition-duration: 0.4s;
+  width: fit-content;
+  color:antiquewhite;
+  border: solid;
+  border-width: 2px;
+  border-color: goldenrod;
+}
+#favorite-button:hover {
+  background-color: hotpink;
+  border-width: 5px;
+  border-color: blanchedalmond;
+}
+#favorite-button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#delete-button {
+  background-color: grey;
+  transition-duration: 0.4s;
+  width: fit-content;
+  color: white;
+}
+#delete-button:hover {
+  background-color: black;
+  border: solid;
+  border-width: 5px;
+  border-color: red
 }
 
 

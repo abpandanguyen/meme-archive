@@ -15,25 +15,25 @@
   </nav>
 <br>
 <section>
-    <div>Meme</div>
+    <div id="headings">Meme</div>
     <div><img width="300px" src="<%= meme.link %>"></div>
     <br>
-    <div>Source: </div>
+    <div id="headings">Source: </div>
     <div><%= meme.source %></div>
     <br>
-    <div>Origin Date: </div>
+    <div id="headings">Origin Date: </div>
     <div><%= String(meme.dateOrigin).substr(3, 13) %></div>
     <br>
-    <div>Description: </div>
+    <div id="headings">Description: </div>
     <div><%= meme.description %></div>
     <br>
-    <div>Posted By:</div>
+    <div id="headings">Posted By:</div>
     <div><%= meme.userName %></div>
     <% if (user && user.equals(meme.user)) { %>
         <div><a href="/memes/<%= meme.id %>/edit">Edit Meme</a></div>
         <br>
         <form action="/memes/<%= meme._id %>?_method=DELETE" method="POST">
-          <input type="submit" value="Delete Meme">
+          <button id="delete-button">Delete Meme</button>
         </form>
     <% } %>
 </section>
@@ -41,7 +41,7 @@
 <% if (user) { %>
   <form id="add-favorite-form" method="POST"
       action ="/memes/<%= meme._id %>/favorites">
-        <input type="submit" value="Favorite Meme">
+      <button id="favorite-button">Favorite</button>
   </form>
 <% } %>
 
@@ -62,7 +62,7 @@
         <option value="4">4</option>
         <option value="5" selected>5</option>
     </select>
-    <input type="submit" value="Add Comment">
+    <button id="add-edit-button">Add Comment</button>
   </form>
 <% } %>
 
@@ -89,7 +89,7 @@
             <td>
               <% if ( user?._id.equals(c.user) ) { %>
               <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete Comment</button>
+                <button id="delete-button">Delete Comment</button>
               </form>
             <% } %>
               </td>

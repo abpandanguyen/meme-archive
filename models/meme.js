@@ -26,7 +26,7 @@ const memeSchema = new Schema({
     },
     source: {
         type: String,
-        enum: ['Twitter', 'Instagram', 'TikTok', 'Facebook', 'Tumblr', 'Discord', 'Other']
+        enum: ['Twitter', 'Instagram', 'TikTok', 'Facebook', 'Tumblr', 'Discord', 'Reddit', 'Other']
     },
     dateOrigin: {
         type: Date,

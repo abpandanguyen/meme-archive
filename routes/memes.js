@@ -22,5 +22,7 @@ router.post('/', memesCtrl.create);
 router.post('/:id/favorites', isLoggedIn, memesCtrl.addFavorite);
 // DELETE
 router.delete('/:id', isLoggedIn, memesCtrl.delete);
+// PUT /memes/:id (update functionality)
+router.put('/:id', isLoggedIn, memesCtrl.update);
 
 module.exports = router;
