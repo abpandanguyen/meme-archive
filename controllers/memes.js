@@ -1,4 +1,5 @@
 const Meme = require('../models/meme');
+const User = require('../models/user');
 
 module.exports = {
     index,
@@ -9,6 +10,7 @@ module.exports = {
     update,
     addFavorite,
     showFavorites,
+    showPosts,
     delete: deleteMeme,
 };
 
@@ -20,6 +22,14 @@ function deleteMeme(req, res) {
         }
     ); 
 }
+
+async function showPosts(req, res) {
+    let user = await User.findById(req.user._id)
+    let memes = await Meme.find({user: user._id})
+    memes.sort((a, b) => a.dateOrigin - b.dateOrigin);
+    res.render('memes/posts', { memes });
+}
+
 
 function showFavorites(req, res) {
     Meme.find({favoritedBy: req.user._id}, function (err, memes) {

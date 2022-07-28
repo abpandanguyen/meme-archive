@@ -8,6 +8,8 @@ const isLoggedIn = require('../config/auth');
 router.get('/', memesCtrl.index);
 // GET /memes
 router.get('/favorites', memesCtrl.showFavorites);
+// POST /memes/posts
+router.get('/posts', isLoggedIn, memesCtrl.showPosts);
 // GET /memes/new
 router.get('/new', isLoggedIn, memesCtrl.new);
 // GET /memes/:id
