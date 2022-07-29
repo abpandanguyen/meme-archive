@@ -25,14 +25,14 @@ function deleteMeme(req, res) {
 async function showPosts(req, res) {
     let user = await User.findById(req.user._id)
     let memes = await Meme.find({user: user._id})
-    memes.sort((a, b) => a.dateOrigin - b.dateOrigin);
+    memes.sort((a, b) => b.dateOrigin - a.dateOrigin);
     res.render('memes/posts', { memes });
 }
 
 
 function showFavorites(req, res) {
     Meme.find({favoritedBy: req.user._id}, function (err, memes) {
-        memes.sort((a, b) => a.dateOrigin - b.dateOrigin);
+        memes.sort((a, b) => b.dateOrigin - a.dateOrigin);
         res.render('memes/favorites', { memes });
     });
 }
@@ -102,7 +102,7 @@ function show(req, res) {
 }
 function index(req, res) {
     Meme.find({}, function (err, memes) {
-        memes.sort((a, b) => a.dateOrigin - b.dateOrigin);
+        memes.sort((a, b) => b.dateOrigin - a.dateOrigin);
         res.render('memes/index', { memes });
     });
 }
