@@ -41,7 +41,7 @@
 <% if (user) { %>
   <form id="add-favorite-form" method="POST"
       action ="/memes/<%= meme._id %>/favorites">
-      <button id="favorite-button">Favorite</button>
+      <button id="favorite-button"><%= meme.favoritedBy.includes(user._id) ? 'Favorited' : 'Favorite' %></button>
   </form>
 <% } %>
 
