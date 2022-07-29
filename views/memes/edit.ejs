@@ -19,10 +19,10 @@
     <form id="new-edit-form" action="/memes/<%= meme._id %>?_method=PUT" method="POST">
         <label>Link:</label>
         <br>
-        <textarea id="link" name="link"><%= meme.link %></textarea>
+        <textarea id="link" name="link" required><%= meme.link %></textarea>
         <br>
         <label>Source:</label>
-        <select name="source">
+        <select name="source" required>
             <% validSources.forEach(function(source, idx) { %>
                 <option value="<%= source %>" <%= idx === 0 ? 'selected' : ''%>>
                     <%= source %>
@@ -30,11 +30,11 @@
             <% }) %>
         </select>
         <label>Origin Date:</label>
-            <input value="<%= meme.dateOrigin %>" type="date" name="dateOrigin">
+            <input value="<%= meme.dateOrigin %>" type="date" name="dateOrigin" required>
         <br>
         <label>Description:</label>
         <br>
-        <textarea id="description-comment" placeholder="Edit your meme!" name="description"><%= meme.description %></textarea>
+        <textarea id="description-comment" placeholder="Edit your meme!" name="description"><%= meme.description %> required</textarea>
         <br>
         <button id="add-edit-button">Save Edit</button>
     </form>
